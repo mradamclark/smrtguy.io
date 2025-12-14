@@ -1,0 +1,8 @@
+{
+  "build_date": "{{ now.Format "2006-01-02T15:04:05Z07:00" }}",
+  "commit": "{{ .GitInfo.Hash }}",
+  "commit_short": "{{ .GitInfo.AbbreviatedHash }}",
+  "commit_date": "{{ with .GitInfo }}{{ .AuthorDate.Format "2006-01-02T15:04:05Z07:00" }}{{ end }}",
+  "commit_author": "{{ .GitInfo.AuthorName }}",
+  "hugo_version": "{{ hugo.Version }}"
+}

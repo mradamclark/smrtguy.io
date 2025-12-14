@@ -2,6 +2,14 @@ baseURL = 'https://www.smrtguy.io/'
 languageCode = 'en-us'
 title = 'smrtguy.io | why > how'
 theme = 'paper-tui'
+enableGitInfo = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[outputFormats.JSON]
+  baseName = "version"
+  mediaType = "application/json"
 
 [params]
   description = "A project garden - what, why & how"
