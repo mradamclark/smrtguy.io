@@ -405,7 +405,7 @@ footer {
 /* Last Updated */
 .last-updated {
   position: fixed;
-  bottom: 1.5rem;
+  bottom: 0.5rem;
   right: 1.5rem;
   font-size: 0.75rem;
   color: #cccccc;
