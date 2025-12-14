@@ -1,36 +1,36 @@
 {{ define "main" }}
-<article class="single-page">
-  <h1 class="page-title">{{ .Title }}</h1>
+<article>
+  <h1 class="text-2xl font-bold mb-4">{{ .Title }}</h1>
 
-  <div class="post-meta">
-    <span class="meta-item">{{ .Date.Format "2006-01-02" }}</span>
+  <div class="text-xs text-text-muted mb-8">
+    <span class="mr-4">{{ .Date.Format "2006-01-02" }}</span>
     {{ with .Params.status }}
-    <span class="meta-item">{{ . }}</span>
+    <span class="mr-4">{{ . }}</span>
     {{ end }}
     {{ with .Params.tags }}
-    <span class="meta-item">{{ delimit . ", " }}</span>
+    <span class="mr-4">{{ delimit . ", " }}</span>
     {{ end }}
   </div>
 
-  <div class="post-content">
+  <div class="post-content leading-loose">
     {{ .Content }}
   </div>
 
   {{ with .Params.repo }}
-  <div class="project-link">
-    <span>Repository: </span><a href="{{ . }}" target="_blank">{{ . }}</a>
+  <div class="mt-8 pt-4 border-t border-border text-sm">
+    <span>Repository: </span><a href="{{ . }}" target="_blank" class="text-text break-all">{{ . }}</a>
   </div>
   {{ end }}
 
-  <nav class="post-nav">
-    <div class="nav-prev">
+  <nav class="flex justify-between mt-12 pt-6 border-t border-border text-sm">
+    <div>
       {{ with .PrevInSection }}
-      <a href="{{ .RelPermalink }}">← {{ .Title }}</a>
+      <a href="{{ .RelPermalink }}" class="text-text-muted no-underline hover:text-text">← {{ .Title }}</a>
       {{ end }}
     </div>
-    <div class="nav-next">
+    <div>
       {{ with .NextInSection }}
-      <a href="{{ .RelPermalink }}">{{ .Title }} →</a>
+      <a href="{{ .RelPermalink }}" class="text-text-muted no-underline hover:text-text">{{ .Title }} →</a>
       {{ end }}
     </div>
   </nav>

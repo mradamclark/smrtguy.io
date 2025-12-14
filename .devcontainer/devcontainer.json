@@ -6,7 +6,8 @@
       "extended": true,
       "version": "latest"
     },
-    "ghcr.io/devcontainers/features/git:1": {}
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/node:1": {}
   },
   "forwardPorts": [1313],
   "portsAttributes": {
@@ -15,12 +16,13 @@
       "onAutoForward": "notify"
     }
   },
-  "postCreateCommand": "hugo version",
+  "postCreateCommand": "npm install && hugo version",
   "customizations": {
     "vscode": {
       "extensions": [
         "budparr.language-hugo-vscode",
-        "eliostruyf.vscode-front-matter"
+        "eliostruyf.vscode-front-matter",
+        "bradlc.vscode-tailwindcss"
       ],
       "settings": {
         "files.associations": {

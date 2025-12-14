@@ -1,7 +1,7 @@
-<header>
-  <nav class="main-nav">
+<header class="mb-16">
+  <nav class="flex flex-wrap gap-8">
     {{ range .Site.Menus.main }}
-      <a href="{{ .URL }}" class="nav-link{{ if $.IsMenuCurrent "main" . }} active{{ end }}">{{ .Name }}</a>
+      <a href="{{ .URL }}" class="text-text no-underline text-sm lowercase hover:text-text-muted{{ if $.IsMenuCurrent "main" . }} text-text-muted{{ end }}">{{ .Name }}</a>
     {{ end }}
   </nav>
 </header>

@@ -1,22 +1,22 @@
 {{ define "main" }}
-<section class="list-page">
-  <h1 class="page-title">{{ .Title }}</h1>
-  <div class="section-content">
+<section>
+  <h1 class="text-2xl font-bold mb-4">{{ .Title }}</h1>
+  <div>
     {{ .Content }}
 
     {{ range .Pages }}
-    <article class="list-item">
-      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    <article class="flex flex-wrap items-baseline gap-2 mb-4 pb-4 border-b border-border last:border-0 last:mb-0 last:pb-0">
+      <a href="{{ .RelPermalink }}" class="text-text no-underline hover:text-text-muted">{{ .Title }}</a>
       {{ if .Params.status }}
-      <span class="item-status">[{{ .Params.status }}]</span>
+      <span class="text-xs text-text-muted">[{{ .Params.status }}]</span>
       {{ end }}
-      <span class="item-date">{{ .Date.Format "2006-01-02" }}</span>
+      <span class="ml-auto text-xs text-text-muted">{{ .Date.Format "2006-01-02" }}</span>
       {{ if .Description }}
-      <p class="item-description">{{ .Description }}</p>
+      <p class="w-full text-sm text-text-muted mt-1">{{ .Description }}</p>
       {{ end }}
     </article>
     {{ else }}
-    <p class="empty-message">Nothing here yet.</p>
+    <p class="text-text-muted">Nothing here yet.</p>
     {{ end }}
   </div>
 </section>

@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  body {
+    font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+    background-color: #fafafa;
+    color: #1a1a1a;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: #1a1a1a;
+    color: #fafafa;
+  }
+}
+
+@layer components {
+  /* SVG Logo text styles */
+  .logo-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 77px;
+    font-weight: 700;
+    fill: #1a1a1a;
+    letter-spacing: -2px;
+  }
+
+  .logo-dot {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 77px;
+    font-weight: 400;
+    fill: #666666;
+  }
+
+  .logo-bracket {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 77px;
+    font-weight: 300;
+    fill: #cccccc;
+  }
+
+  /* Post content typography */
+  .post-content h2 {
+    @apply mt-10 mb-4 text-lg font-bold;
+  }
+
+  .post-content h3 {
+    @apply mt-8 mb-3 text-base font-bold;
+  }
+
+  .post-content p {
+    @apply mb-5;
+  }
+
+  .post-content ul,
+  .post-content ol {
+    @apply mb-5 pl-6;
+  }
+
+  .post-content li {
+    @apply mb-2;
+  }
+
+  .post-content a {
+    @apply text-text underline underline-offset-2 hover:text-text-muted;
+  }
+
+  .post-content pre {
+    @apply bg-[#f0f0f0] p-4 overflow-x-auto mb-5 text-sm rounded-sm;
+  }
+
+  .post-content code {
+    @apply bg-[#f0f0f0] px-1.5 py-0.5 text-sm rounded-sm;
+  }
+
+  .post-content pre code {
+    @apply bg-transparent p-0;
+  }
+}
+
+@layer utilities {
+  /* Typewriter animation */
+  .typewriter {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typing 2s steps(34) 0.5s forwards;
+  }
+
+  /* Cursor blink animation */
+  .cursor-blink {
+    display: inline-block;
+    animation: blink 1s step-end infinite;
+  }
+
+  .cursor-fill {
+    fill: #1a1a1a;
+  }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 34ch; }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .logo-svg {
+    max-width: 400px;
+  }
+}
