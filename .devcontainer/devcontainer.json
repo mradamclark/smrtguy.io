@@ -1,0 +1,33 @@
+{
+  "name": "AngryDeveloper Hugo Site",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/hugo:1": {
+      "extended": true,
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "forwardPorts": [1313],
+  "portsAttributes": {
+    "1313": {
+      "label": "Hugo Server",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "hugo version",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "budparr.language-hugo-vscode",
+        "eliostruyf.vscode-front-matter"
+      ],
+      "settings": {
+        "files.associations": {
+          "*.html": "html"
+        }
+      }
+    }
+  },
+  "remoteUser": "vscode"
+}

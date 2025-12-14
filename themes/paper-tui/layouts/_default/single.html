@@ -1,0 +1,38 @@
+{{ define "main" }}
+<article class="single-page">
+  <h1 class="page-title">{{ .Title }}</h1>
+
+  <div class="post-meta">
+    <span class="meta-item">{{ .Date.Format "2006-01-02" }}</span>
+    {{ with .Params.status }}
+    <span class="meta-item">{{ . }}</span>
+    {{ end }}
+    {{ with .Params.tags }}
+    <span class="meta-item">{{ delimit . ", " }}</span>
+    {{ end }}
+  </div>
+
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+
+  {{ with .Params.repo }}
+  <div class="project-link">
+    <span>Repository: </span><a href="{{ . }}" target="_blank">{{ . }}</a>
+  </div>
+  {{ end }}
+
+  <nav class="post-nav">
+    <div class="nav-prev">
+      {{ with .PrevInSection }}
+      <a href="{{ .RelPermalink }}">← {{ .Title }}</a>
+      {{ end }}
+    </div>
+    <div class="nav-next">
+      {{ with .NextInSection }}
+      <a href="{{ .RelPermalink }}">{{ .Title }} →</a>
+      {{ end }}
+    </div>
+  </nav>
+</article>
+{{ end }}

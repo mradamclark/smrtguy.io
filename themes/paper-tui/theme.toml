@@ -1,0 +1,10 @@
+name = "paper-tui"
+license = "MIT"
+licenselink = ""
+description = "An aged paper aesthetic with TUI elements"
+tags = ["blog", "minimal", "monospace", "retro"]
+features = ["blog", "projects"]
+min_version = "0.100.0"
+
+[author]
+  name = "AngryDeveloper"

@@ -1,0 +1,35 @@
+baseURL = 'https://www.smrtguy.io/'
+languageCode = 'en-us'
+title = 'smrtguy.io | why > how'
+theme = 'paper-tui'
+
+[params]
+  description = "A project garden and blog - why > how"
+  author = "smrtguy"
+  github = "https://github.com/yourusername"
+  linkedin = "https://linkedin.com/in/yourusername"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 2
+  [[menu.main]]
+    name = "Articles"
+    url = "/articles/"
+    weight = 3
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 4
+
+[markup]
+  [markup.highlight]
+    style = "monokai"
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
