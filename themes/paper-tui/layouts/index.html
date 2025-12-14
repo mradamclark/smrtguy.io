@@ -1,20 +1,20 @@
 {{ define "main" }}
 <div class="landing">
   <div class="logo">
-    <svg viewBox="0 0 480 120" class="logo-svg">
+    <svg viewBox="0 0 538 144" class="logo-svg">
       <!-- Terminal bracket -->
-      <text x="0" y="85" class="logo-bracket">[</text>
+      <text x="0" y="102" class="logo-bracket">[</text>
       <!-- Main text -->
-      <text x="38" y="85" class="logo-text">smrtguy</text>
+      <text x="46" y="102" class="logo-text">smrtguy</text>
       <!-- .io with accent -->
-      <text x="310" y="85" class="logo-dot">.io</text>
+      <text x="354" y="102" class="logo-dot">.io</text>
       <!-- Terminal bracket -->
-      <text x="428" y="85" class="logo-bracket">]</text>
+      <text x="490" y="102" class="logo-bracket">]</text>
     </svg>
   </div>
   <div class="tagline">
-    <p class="tagline-main">why > how</p>
-    <p class="tagline-sub"><span class="typewriter">where all the smrt things happen.</span><span class="cursor">|</span></p>
+    <p class="tagline-main">{{ .Site.Params.tagline_main }}</p>
+    <p class="tagline-sub"><span class="typewriter">{{ .Site.Params.tagline_sub }}</span><span class="cursor">|</span></p>
   </div>
 </div>
 {{ end }}

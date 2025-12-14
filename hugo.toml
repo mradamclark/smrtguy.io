@@ -4,10 +4,12 @@ title = 'smrtguy.io | why > how'
 theme = 'paper-tui'
 
 [params]
-  description = "A project garden and blog - why > how"
+  description = "A project garden - what, why & how"
   author = "smrtguy"
-  github = "https://github.com/yourusername"
-  linkedin = "https://linkedin.com/in/yourusername"
+  tagline_main = "what, why & how ..."
+  tagline_sub = "where all the smrt things happen."
+  #github = "https://github.com/yourusername"
+  linkedin = "https://linkedin.com/in/aclark000"
 
 [menu]
   [[menu.main]]

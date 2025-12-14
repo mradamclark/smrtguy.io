@@ -76,14 +76,14 @@ body {
 }
 
 .logo-svg {
-  width: 100%;
-  max-width: 500px;
+  width: 700px;
+  max-width: 90vw;
   height: auto;
 }
 
 .logo-text {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 64px;
+  font-size: 77px;
   font-weight: 700;
   fill: var(--text);
   letter-spacing: -2px;
@@ -91,14 +91,14 @@ body {
 
 .logo-dot {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 64px;
+  font-size: 77px;
   font-weight: 400;
   fill: var(--text-muted);
 }
 
 .logo-bracket {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 64px;
+  font-size: 77px;
   font-weight: 300;
   fill: #cccccc;
 }
@@ -384,7 +384,7 @@ footer {
   }
 
   .logo-svg {
-    max-width: 340px;
+    max-width: 400px;
   }
 
   .tagline-main {
