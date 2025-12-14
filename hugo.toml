@@ -1,6 +1,6 @@
 baseURL = 'https://www.smrtguy.io/'
 languageCode = 'en-us'
-title = 'smrtguy.io | why > how'
+title = 'smrtguy.io | what, why & how'
 theme = 'paper-tui'
 enableGitInfo = true
 
@@ -16,7 +16,9 @@ enableGitInfo = true
   author = "smrtguy"
   tagline_main = "what, why & how ..."
   tagline_sub = "where all the smrt things happen."
-  #github = "https://github.com/yourusername"
+  
+  email = "adam@smrtguy.io"
+  github = "https://github.com/mradamclark"
   linkedin = "https://linkedin.com/in/aclark000"
 
 [menu]
