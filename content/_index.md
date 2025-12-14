@@ -1,6 +1,5 @@
 +++
 title = 'Home'
-draft = true
 +++
 
 Welcome to my corner of the internet. I'm a developer who believes understanding *why* matters more than knowing *how*.
