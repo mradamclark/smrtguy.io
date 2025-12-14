@@ -1,3 +1,15 @@
 <div class="fixed bottom-2 right-6 text-xs text-[#cccccc] z-[100]">
-  {{ now.Format "01.02.2006.15.04" }}
+  <time id="last-updated" datetime="{{ now.Format "2006-01-02T15:04:05Z07:00" }}">
+    {{ now.Format "01.02.2006.15.04" }}
+  </time>
 </div>
+<script>
+  (function() {
+    var el = document.getElementById('last-updated');
+    var utc = new Date(el.getAttribute('datetime'));
+    var pad = function(n) { return n < 10 ? '0' + n : n; };
+    var tz = new Intl.DateTimeFormat('en', { timeZoneName: 'short' }).formatToParts(utc).find(function(p) { return p.type === 'timeZoneName'; }).value;
+    var formatted = pad(utc.getMonth() + 1) + '.' + pad(utc.getDate()) + '.' + utc.getFullYear() + '.' + pad(utc.getHours()) + '.' + pad(utc.getMinutes()) + ' ' + tz;
+    el.textContent = formatted;
+  })();
+</script>
