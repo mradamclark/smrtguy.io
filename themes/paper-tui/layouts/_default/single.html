@@ -2,7 +2,7 @@
 <article>
   <h1 class="text-2xl font-bold mb-4">{{ .Title }}</h1>
 
-  <div class="text-xs text-text-muted mb-8">
+  <div class="text-xs text-text mb-8">
     <span class="mr-4">{{ .Date.Format "2006-01-02" }}</span>
     {{ with .Params.status }}
     <span class="mr-4">{{ . }}</span>
@@ -25,12 +25,12 @@
   <nav class="flex justify-between mt-12 pt-6 border-t border-border text-sm">
     <div>
       {{ with .PrevInSection }}
-      <a href="{{ .RelPermalink }}" class="text-text-muted no-underline hover:text-text">← {{ .Title }}</a>
+      <a href="{{ .RelPermalink }}" class="text-text no-underline">← {{ .Title }}</a>
       {{ end }}
     </div>
     <div>
       {{ with .NextInSection }}
-      <a href="{{ .RelPermalink }}" class="text-text-muted no-underline hover:text-text">{{ .Title }} →</a>
+      <a href="{{ .RelPermalink }}" class="text-text no-underline">{{ .Title }} →</a>
       {{ end }}
     </div>
   </nav>

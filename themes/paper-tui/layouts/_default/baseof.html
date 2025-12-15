@@ -20,6 +20,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+  <script>
+  MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   {{ $css := resources.Get "css/main.css" | css.PostCSS }}
   {{ if hugo.IsProduction }}
     {{ $css = $css | minify | fingerprint }}
@@ -31,7 +37,7 @@
   {{ partial "social.html" . }}
   {{ partial "footer.html" . }}
   {{ partial "last-updated.html" . }}
-  <div class="max-w-[680px] md:max-w-content mx-auto py-8 md:py-16 px-4 md:px-6 relative">
+  <div class="w-full max-w-[680px] md:max-w-[80%] mx-auto py-8 md:py-16 px-4 md:px-6 relative">
     <div class="relative">
       <main>
         {{ block "main" . }}{{ end }}
@@ -67,6 +73,44 @@
         updateBulb();
       });
     })();
-  </script>
+
+    </script>
+    {{ if .Params.mermaid }}
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+      (function() {
+        function getMermaidTheme() {
+          return document.documentElement.classList.contains('dark') ? 'dark' : 'default';
+        }
+
+        mermaid.initialize({
+          startOnLoad: true,
+          theme: getMermaidTheme(),
+          securityLevel: 'loose'
+        });
+
+        async function rerenderMermaid() {
+          var diagrams = document.querySelectorAll('.mermaid');
+          diagrams.forEach(function(el, index) {
+            var source = el.getAttribute('data-source');
+            if (source) {
+              el.removeAttribute('data-processed');
+              el.innerHTML = source;
+            }
+          });
+          mermaid.initialize({
+            startOnLoad: false,
+            theme: getMermaidTheme(),
+            securityLevel: 'loose'
+          });
+          await mermaid.run({ nodes: diagrams });
+        }
+
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+          setTimeout(rerenderMermaid, 50);
+        });
+      })();
+    </script>
+    {{ end }}
 </body>
 </html>

@@ -10,8 +10,8 @@ module.exports = {
       colors: {
         'bg': 'var(--bg)',
         'text': 'var(--text)',
-        'text-muted': 'var(--text-muted)',
         'border': 'var(--border)',
+        'code-bg': 'var(--code-bg)',
       },
       maxWidth: {
         'content': '850px',

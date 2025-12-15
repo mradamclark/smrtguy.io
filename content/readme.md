@@ -1,6 +1,6 @@
 +++
 title = 'readme'
-draft = true
+layout = 'readme'
 +++
 
 ## Who am I?

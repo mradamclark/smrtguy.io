@@ -6,17 +6,17 @@
 
     {{ range .Pages }}
     <article class="flex flex-wrap items-baseline gap-2 mb-4 pb-4 border-b border-border last:border-0 last:mb-0 last:pb-0">
-      <a href="{{ .RelPermalink }}" class="text-text no-underline hover:text-text-muted">{{ .Title }}</a>
+      <a href="{{ .RelPermalink }}" class="text-text no-underline">{{ .Title }}</a>
       {{ if .Params.status }}
-      <span class="text-xs text-text-muted">[{{ .Params.status }}]</span>
+      <span class="text-xs text-text">[{{ .Params.status }}]</span>
       {{ end }}
-      <span class="ml-auto text-xs text-text-muted">{{ .Date.Format "2006-01-02" }}</span>
+      <span class="ml-auto text-xs text-text">{{ .Date.Format "2006-01-02" }}</span>
       {{ if .Description }}
-      <p class="w-full text-sm text-text-muted mt-1">{{ .Description }}</p>
+      <p class="w-full text-sm text-text mt-1">{{ .Description }}</p>
       {{ end }}
     </article>
     {{ else }}
-    <p class="text-text-muted">Nothing here yet.</p>
+    <p class="text-text">Nothing here yet.</p>
     {{ end }}
   </div>
 </section>

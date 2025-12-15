@@ -1,8 +1,9 @@
-baseURL = 'https://www.smrtguy.io/'
+baseURL = 'https://smrtguy.io/'
 languageCode = 'en-us'
 title = 'smrtguy.io | what, why & how'
 theme = 'paper-tui'
 enableGitInfo = true
+enableEmoji = true
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
@@ -40,7 +41,20 @@ enableGitInfo = true
 
 [markup]
   [markup.highlight]
-    style = "monokai"
+    style = "gruvbox-light"
+    lineNos = true
+    noClasses = false
+    codeFences = true
+    tabWidth = 4
+    anchorLineNos = true
+    lineNoStart = 1
   [markup.goldmark]
+    [markup.goldmark.extensions]
+      footnote = true        # Enable footnotes
+      strikethrough = true   # ~~strikethrough~~
+      table = true           # Markdown tables
+      typographer = true     # Smart quotes, dashes
+    [markup.goldmark.parser]
+      autoHeadingID = true   # Auto-generate heading IDs
     [markup.goldmark.renderer]
       unsafe = true
