@@ -28,8 +28,9 @@
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   {{ $css := resources.Get "css/main.css" | css.PostCSS }}
   {{ if hugo.IsProduction }}
-    {{ $css = $css | minify | fingerprint }}
+    {{ $css = $css | minify }}
   {{ end }}
+  {{ $css = $css | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 </head>
 <body>
