@@ -34,10 +34,15 @@ enableEmoji = true
     url = "/tinkerings/"
     weight = 2
   [[menu.main]]
+    identifier = "demos"
+    name = "demos"
+    url = "/demos/"
+    weight = 3
+  [[menu.main]]
     identifier = "readme"
     name = "readme"
     url = "/readme/"
-    weight = 3
+    weight = 4
 
 [markup]
   [markup.highlight]

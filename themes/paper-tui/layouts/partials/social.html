@@ -1,5 +1,10 @@
-<div class="fixed top-0 left-0 right-0 h-16 bg-bg z-[99]"></div>
-<div class="fixed top-6 right-6 flex gap-2 z-[100]">
+<div class="fixed top-0 left-0 right-0 h-16 bg-header-bg z-[99]"></div>
+{{ if not .IsHome }}
+<a href="/" class="fixed top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[100] text-text no-underline" title="Home">
+  {{ partial "logo.html" (dict "class" "w-[260px] h-auto") }}
+</a>
+{{ end }}
+<div class="fixed top-8 -translate-y-1/2 right-6 flex items-center gap-2 z-[100]">
   <button id="theme-toggle" class="text-text transition-colors" title="Toggle dark mode">
     <!-- Lightbulb ON (shown in light mode) -->
     <svg id="bulb-on" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">

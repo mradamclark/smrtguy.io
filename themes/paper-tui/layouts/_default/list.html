@@ -1,11 +1,13 @@
 {{ define "main" }}
 <section>
-  <h1 class="text-2xl font-bold mb-4">{{ .Title }}</h1>
-  <div>
+  <h1 class="text-2xl font-bold mb-4 text-center">{{ .Title }}</h1>
+  <div class="mb-6">
     {{ .Content }}
-
+  </div>
+  <hr class="mb-4 mt-8 border-border">
+  <div>
     {{ range .Pages }}
-    <article class="flex flex-wrap items-baseline gap-2 mb-4 pb-4 border-b border-border last:border-0 last:mb-0 last:pb-0">
+    <article class="flex flex-wrap items-baseline gap-2 mt-4 pt-4 border-t border-border first:border-0 first:mt-0 first:pt-0">
       <a href="{{ .RelPermalink }}" class="text-text no-underline">{{ .Title }}</a>
       {{ if .Params.status }}
       <span class="text-xs text-text">[{{ .Params.status }}]</span>

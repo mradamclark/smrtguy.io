@@ -122,6 +122,7 @@ npm install
 git status
 ```
 
+{{% code-compare %}}
 ```html
 <!DOCTYPE html>
 <html>
@@ -142,6 +143,7 @@ git status
     padding: 1rem;
 }
 ```
+{{% /code-compare %}}
 
 ---
 

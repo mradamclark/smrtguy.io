@@ -5,18 +5,24 @@
 @layer base {
   :root {
     --bg: #faf8f3;
+    --header-bg: #f5f3ed;
     --text: #1a1a1a;
     --border: #b0b0b0;
     --code-bg: #f0ede6;
+    --code-bg-light: #f5f2ec;
     --accent: #cccccc;
+    --link-hover: #c45a2c;
   }
 
   .dark {
     --bg: #1a1a1a;
+    --header-bg: #141414;
     --text: #f5f2eb;
     --border: #333333;
     --code-bg: #2a2a2a;
+    --code-bg-light: #222222;
     --accent: #555555;
+    --link-hover: #e07040;
   }
 
   *, *::before, *::after {
@@ -41,6 +47,10 @@
   ::selection {
     background: var(--text);
     color: var(--bg);
+  }
+
+  a:hover {
+    color: var(--link-hover);
   }
 }
 
@@ -68,31 +78,50 @@
     fill: var(--accent);
   }
 
-  /* Post content typography */
-  .post-content h1 {
-    @apply mt-3 mb-1.5 text-2xl font-bold;
+  /* Table of contents */
+  .toc ul {
+    @apply list-none pl-0 text-sm;
   }
 
-  .post-content h2 {
-    @apply mt-2.5 mb-1 text-xl font-bold;
+  .toc ul ul {
+    @apply pl-4;
   }
 
-  .post-content h3 {
-    @apply mt-2 mb-1 text-lg font-bold;
+  .toc li {
+    @apply mb-1;
   }
 
-  .post-content h4 {
-    @apply mt-1.5 mb-0.5 text-base font-bold;
+  .toc a {
+    @apply text-text no-underline;
   }
 
-  .post-content p {
-    @apply mb-5;
+  .toc a:hover {
+    @apply underline;
   }
 
-  .post-content ul {
-    @apply mb-5 pl-6 list-disc;
+  /* Post content overrides for prose */
+
+  /* Horizontal rule spacing */
+  .post-content hr {
+    @apply my-4;
   }
 
+  /* Inline code styling */
+  .post-content :not(pre) > code {
+    @apply bg-code-bg px-1.5 py-0.5 text-sm rounded-sm;
+  }
+
+  .post-content :not(pre) > code::before,
+  .post-content :not(pre) > code::after {
+    content: none;
+  }
+
+  /* List padding overrides */
+  .post-content ol {
+    @apply pl-8;
+  }
+
+  /* Task lists - prose doesn't handle these */
   .post-content ul.task-list,
   .post-content ul:has(input[type="checkbox"]) {
     @apply list-none pl-3;
@@ -102,10 +131,7 @@
     @apply list-none;
   }
 
-  .post-content ol {
-    @apply mb-5 pl-8 list-decimal;
-  }
-
+  /* Nested ordered lists with different markers */
   .post-content ol ol {
     @apply list-[lower-alpha];
   }
@@ -118,37 +144,21 @@
     @apply list-[upper-alpha];
   }
 
-  .post-content li {
-    @apply mb-2;
-  }
-
-  .post-content a {
-    @apply text-text underline underline-offset-2;
-  }
-
-  .post-content hr {
-    border: none;
-    border-top: 1px solid var(--border);
-    @apply my-8;
-  }
-
-  .post-content table {
-    @apply w-full mb-5 text-sm border-collapse;
-  }
-
+  /* Table enhancements - add borders, padding and hover */
   .post-content th,
   .post-content td {
-    @apply px-3 py-2 text-left border border-border;
+    @apply border border-border px-3 py-2;
   }
 
   .post-content th {
-    @apply font-bold bg-code-bg;
+    @apply bg-code-bg;
   }
 
   .post-content tr:hover {
     @apply bg-code-bg;
   }
 
+  /* Side-by-side shortcode */
   .post-content .side-by-side {
     @apply flex flex-wrap gap-4 mb-5;
   }
@@ -158,23 +168,32 @@
     width: auto !important;
   }
 
-  .post-content pre {
-    background-color: var(--code-bg);
-    @apply p-4 overflow-x-auto mb-5 text-sm rounded-sm;
+  /* Side-by-side code blocks */
+  .code-compare {
+    @apply flex flex-wrap gap-4 mb-5;
   }
 
-  .post-content code {
-    background-color: var(--code-bg);
-    @apply px-1.5 py-0.5 text-sm rounded-sm;
-  }
-
-  .post-content pre code {
-    @apply bg-transparent p-0;
+  .code-compare .highlight {
+    @apply flex-1 min-w-0 mb-0;
   }
 
   /* Hugo highlight wrapper */
   .highlight {
-    @apply mb-5 rounded-sm overflow-hidden;
+    @apply mb-5 rounded-sm overflow-hidden relative;
+  }
+
+  .copy-btn {
+    @apply absolute top-2 right-2 px-2 py-1 text-xs rounded-sm opacity-0 transition-opacity;
+    background-color: var(--border);
+    color: var(--text);
+  }
+
+  .highlight:hover .copy-btn {
+    @apply opacity-100;
+  }
+
+  .copy-btn:hover {
+    background-color: var(--accent);
   }
 
   .highlight pre {
@@ -193,13 +212,15 @@
   }
 
   .highlight .lntd:first-child {
-    @apply pr-4 select-none;
+    @apply pr-1 select-none;
     width: 1%;
     min-width: fit-content;
+    background-color: var(--code-bg-light);
   }
 
   .highlight .lntd:first-child pre {
-    @apply py-4 pl-4;
+    @apply py-4 pl-2;
+    background-color: var(--code-bg-light);
   }
 
   .highlight .lntd:last-child {
@@ -207,7 +228,7 @@
   }
 
   .highlight .lntd:last-child pre {
-    @apply py-4 pr-4 overflow-x-auto;
+    @apply py-4 pl-3 pr-4 overflow-x-auto;
   }
 
   .highlight code {

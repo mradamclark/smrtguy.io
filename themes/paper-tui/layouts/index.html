@@ -1,16 +1,7 @@
 {{ define "main" }}
 <div class="flex flex-col items-center justify-center min-h-[60vh] text-center">
   <div class="mb-8">
-    <svg viewBox="0 0 538 144" class="logo-svg w-[700px] max-w-[90vw] h-auto">
-      <!-- Terminal bracket -->
-      <text x="0" y="102" class="logo-bracket">[</text>
-      <!-- Main text -->
-      <text x="46" y="102" class="logo-text">smrtguy</text>
-      <!-- .io with accent -->
-      <text x="354" y="102" class="logo-dot">.io</text>
-      <!-- Terminal bracket -->
-      <text x="490" y="102" class="logo-bracket">]</text>
-    </svg>
+    {{ partial "logo.html" (dict "class" "w-[700px] max-w-[90vw] h-auto") }}
   </div>
   <div class="text-center">
     <p class="text-lg text-text tracking-wide mb-2">{{ .Site.Params.tagline_main }}</p>

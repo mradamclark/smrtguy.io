@@ -1,6 +1,6 @@
 {{ define "main" }}
 <article>
-  <h1 class="text-2xl font-bold mb-4">{{ .Title }}</h1>
+  <h1 class="text-2xl font-bold mb-4 text-center">{{ .Title }}</h1>
 
   <div class="text-xs text-text mb-8">
     <span class="mr-4">{{ .Date.Format "2006-01-02" }}</span>
@@ -12,7 +12,14 @@
     {{ end }}
   </div>
 
-  <div class="post-content leading-loose">
+  {{ if .Params.toc }}
+  <nav class="toc mb-8 p-4 bg-code-bg rounded-sm">
+    <h2 class="text-sm font-bold mb-2">Contents</h2>
+    {{ .TableOfContents }}
+  </nav>
+  {{ end }}
+
+  <div class="prose post-content leading-loose max-w-none">
     {{ .Content }}
   </div>
 
