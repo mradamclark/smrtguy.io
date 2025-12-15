@@ -3,6 +3,24 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --bg: #f5f2eb;
+    --text: #1a1a1a;
+    --text-muted: #666666;
+    --border: #e0e0e0;
+    --code-bg: #ebe8e1;
+    --accent: #cccccc;
+  }
+
+  .dark {
+    --bg: #1a1a1a;
+    --text: #f5f2eb;
+    --text-muted: #999999;
+    --border: #333333;
+    --code-bg: #2a2a2a;
+    --accent: #555555;
+  }
+
   *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -16,14 +34,15 @@
 
   body {
     font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
-    background-color: #fafafa;
-    color: #1a1a1a;
+    background-color: var(--bg);
+    color: var(--text);
     min-height: 100vh;
+    transition: background-color 0.2s, color 0.2s;
   }
 
   ::selection {
-    background: #1a1a1a;
-    color: #fafafa;
+    background: var(--text);
+    color: var(--bg);
   }
 }
 
@@ -33,7 +52,7 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 77px;
     font-weight: 700;
-    fill: #1a1a1a;
+    fill: var(--text);
     letter-spacing: -2px;
   }
 
@@ -41,14 +60,14 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 77px;
     font-weight: 400;
-    fill: #666666;
+    fill: var(--text-muted);
   }
 
   .logo-bracket {
     font-family: 'JetBrains Mono', monospace;
     font-size: 77px;
     font-weight: 300;
-    fill: #cccccc;
+    fill: var(--accent);
   }
 
   /* Post content typography */
@@ -78,11 +97,13 @@
   }
 
   .post-content pre {
-    @apply bg-[#f0f0f0] p-4 overflow-x-auto mb-5 text-sm rounded-sm;
+    background-color: var(--code-bg);
+    @apply p-4 overflow-x-auto mb-5 text-sm rounded-sm;
   }
 
   .post-content code {
-    @apply bg-[#f0f0f0] px-1.5 py-0.5 text-sm rounded-sm;
+    background-color: var(--code-bg);
+    @apply px-1.5 py-0.5 text-sm rounded-sm;
   }
 
   .post-content pre code {
@@ -107,7 +128,7 @@
   }
 
   .cursor-fill {
-    fill: #1a1a1a;
+    fill: var(--text);
   }
 }
 

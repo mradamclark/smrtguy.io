@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     './themes/paper-tui/layouts/**/*.html',
     './content/**/*.{html,md}',
@@ -7,10 +8,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'bg': '#fafafa',
-        'text': '#1a1a1a',
-        'text-muted': '#666666',
-        'border': '#e0e0e0',
+        'bg': 'var(--bg)',
+        'text': 'var(--text)',
+        'text-muted': 'var(--text-muted)',
+        'border': 'var(--border)',
       },
       maxWidth: {
         'content': '850px',
