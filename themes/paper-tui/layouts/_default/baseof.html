@@ -19,19 +19,15 @@
   <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 </head>
 <body>
-  <div class="max-w-content mx-auto py-16 px-6 relative">
-    {{ partial "social.html" . }}
-    {{ partial "last-updated.html" . }}
+  {{ partial "nav.html" . }}
+  {{ partial "social.html" . }}
+  {{ partial "footer.html" . }}
+  {{ partial "last-updated.html" . }}
+  <div class="max-w-[680px] md:max-w-content mx-auto py-8 md:py-16 px-4 md:px-6 relative">
     <div class="relative">
-      {{ if not .IsHome }}
-      {{ partial "header.html" . }}
-      {{ end }}
       <main>
         {{ block "main" . }}{{ end }}
       </main>
-      {{ if not .IsHome }}
-      {{ partial "footer.html" . }}
-      {{ end }}
     </div>
   </div>
 </body>

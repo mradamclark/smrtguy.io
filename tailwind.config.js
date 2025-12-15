@@ -13,7 +13,7 @@ module.exports = {
         'border': '#e0e0e0',
       },
       maxWidth: {
-        'content': '680px',
+        'content': '850px',
       },
       fontFamily: {
         'mono': ['JetBrains Mono', 'SF Mono', 'Consolas', 'monospace'],

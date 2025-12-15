@@ -1,0 +1,11 @@
+<nav class="fixed top-6 left-6 flex items-center gap-6 z-[100]">
+  <a href="/" class="text-text-muted hover:text-text transition-colors pb-1 {{ if .IsHome }}border-b-2 border-text text-text{{ end }}" title="Home">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+    </svg>
+  </a>
+  {{ range .Site.Menus.main }}
+  {{ $active := hasPrefix $.RelPermalink .URL }}
+  <a href="{{ .URL }}" class="text-text-muted hover:text-text transition-colors text-base no-underline pb-1 {{ if $active }}border-b-2 border-text text-text{{ end }}">{{ .Name }}</a>
+  {{ end }}
+</nav>

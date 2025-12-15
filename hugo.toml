@@ -23,21 +23,20 @@ enableGitInfo = true
 
 [menu]
   [[menu.main]]
-    name = "Home"
-    url = "/"
+    identifier = "ramblings"
+    name = "ramblings"
+    url = "/ramblings/"
     weight = 1
   [[menu.main]]
-    name = "Projects"
-    url = "/projects/"
+    identifier = "tinkerings"
+    name = "tinkerings"
+    url = "/tinkerings/"
     weight = 2
   [[menu.main]]
-    name = "Articles"
-    url = "/articles/"
+    identifier = "readme"
+    name = "readme"
+    url = "/readme/"
     weight = 3
-  [[menu.main]]
-    name = "About"
-    url = "/about/"
-    weight = 4
 
 [markup]
   [markup.highlight]
