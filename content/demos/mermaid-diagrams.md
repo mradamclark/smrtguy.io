@@ -3,6 +3,7 @@ title: "Mermaid Diagrams"
 date: 2024-01-15
 description: "Examples of Mermaid diagrams in Hugo"
 mermaid: true
+draft: true
 ---
 
 Mermaid lets you create diagrams using text definitions. Here are some examples.
