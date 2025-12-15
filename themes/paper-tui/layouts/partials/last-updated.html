@@ -1,6 +1,6 @@
 <div class="fixed bottom-2 right-6 text-xs text-[#cccccc] z-[100]">
-  <time id="last-updated" datetime="{{ now.Format "2006-01-02T15:04:05Z07:00" }}">
-    {{ now.Format "01.02.2006.15.04" }}
+  <time id="last-updated" datetime="{{ now.UTC.Format "2006-01-02T15:04:05Z" }}">
+    {{ now.UTC.Format "01.02.2006.15.04" }} UTC
   </time>
 </div>
 <script>
