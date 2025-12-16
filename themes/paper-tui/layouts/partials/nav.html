@@ -11,8 +11,18 @@
     {{ end }}
   {{ end }}
 {{ end }}
+
+{{/* Determine current page name - top level section only */}}
+{{ $currentPageName := "home" }}
+{{ if not .IsHome }}
+  {{ with .Section }}
+    {{ $currentPageName = . }}
+  {{ end }}
+{{ end }}
+
 {{ if gt $visibleMenuItems 0 }}
-<nav class="fixed top-8 -translate-y-1/2 left-6 flex items-center gap-6 z-[100]">
+{{/* Desktop nav - hidden on mobile */}}
+<nav class="hidden md:flex fixed top-8 -translate-y-1/2 left-6 items-center gap-6 z-[100]">
   <a href="/" class="text-text transition-colors pb-1 {{ if .IsHome }}border-b-2 border-text{{ end }}" title="Home">
     <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
       <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
@@ -33,5 +43,57 @@
   <a href="{{ .URL }}" class="text-text transition-colors text-base no-underline pb-1 {{ if $active }}border-b-2 border-text{{ end }}">{{ .Name }}</a>
   {{ end }}
   {{ end }}
+  <button id="theme-toggle" class="text-text transition-colors" title="Toggle dark mode">
+    <svg id="bulb-on" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+      <path d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7z"/>
+    </svg>
+    <svg id="bulb-off" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display:none;">
+      <path d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7zm2.9 11.1l-.9.6V16h-4v-2.3l-.9-.6C7.8 12.2 7 10.6 7 9c0-2.8 2.2-5 5-5s5 2.2 5 5c0 1.6-.8 3.2-2.1 4.1z"/>
+    </svg>
+  </button>
+</nav>
+
+{{/* Mobile nav - hamburger menu */}}
+<nav class="md:hidden fixed top-4 left-4 z-[100]">
+  <button id="hamburger-btn" class="hamburger-btn flex items-center justify-center text-text bg-bg border border-border rounded p-2" aria-label="Toggle menu" aria-expanded="false">
+    <span class="hamburger-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+  </button>
+
+  <div id="mobile-menu" class="mobile-menu hidden absolute top-full left-0 mt-2 bg-bg border border-border rounded shadow-lg min-w-[150px]">
+    <a href="/" class="flex items-center gap-2 px-4 py-3 text-text no-underline border-b border-border {{ if .IsHome }}bg-code-bg{{ end }}">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+      </svg>
+      <span class="text-sm">home</span>
+    </a>
+    {{ range .Site.Menus.main }}
+    {{ $page := $.Site.GetPage .URL }}
+    {{ $hasContent := false }}
+    {{ if $page }}
+      {{ if $page.IsSection }}
+        {{ $hasContent = gt (len $page.RegularPages) 0 }}
+      {{ else }}
+        {{ $hasContent = true }}
+      {{ end }}
+    {{ end }}
+    {{ if $hasContent }}
+    {{ $active := hasPrefix $.RelPermalink .URL }}
+    <a href="{{ .URL }}" class="block px-4 py-3 text-text no-underline text-sm border-b border-border {{ if $active }}bg-code-bg{{ end }}">{{ .Name }}</a>
+    {{ end }}
+    {{ end }}
+    <button id="theme-toggle-mobile" class="flex items-center gap-2 w-full px-4 py-3 text-text text-left border-t border-border" title="Toggle dark mode">
+      <svg class="bulb-on-mobile" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+        <path d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7z"/>
+      </svg>
+      <svg class="bulb-off-mobile" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="display:none;">
+        <path d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7zm2.9 11.1l-.9.6V16h-4v-2.3l-.9-.6C7.8 12.2 7 10.6 7 9c0-2.8 2.2-5 5-5s5 2.2 5 5c0 1.6-.8 3.2-2.1 4.1z"/>
+      </svg>
+      <span class="text-sm">theme</span>
+    </button>
+  </div>
 </nav>
 {{ end }}

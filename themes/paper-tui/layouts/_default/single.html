@@ -1,6 +1,8 @@
 {{ define "main" }}
 <article>
-  <h1 class="text-2xl font-bold mb-4 text-center">{{ .Title }}</h1>
+  {{- $displayTitle := .Slug | default (.Title | urlize) -}}
+  {{- $sectionURL := printf "/%s/" .Section -}}
+  <h1 class="title-path mb-4"><a href="/" class="path-link">~</a>/<a href="{{ $sectionURL }}" class="path-link">..</a>/{{ $displayTitle }}</h1>
 
   <div class="text-xs text-text mb-8">
     <span class="mr-4">{{ .Date.Format "2006-01-02" }}</span>

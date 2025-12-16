@@ -278,11 +278,287 @@
   51%, 100% { opacity: 0; }
 }
 
+/* Ensure content clears the fixed header */
+.main-content {
+  padding-top: calc(4rem + 1.5rem); /* header height (h-16) + extra spacing */
+}
+
+/* Page Title Styles */
+
+/* Option 1: Bracket-wrapped (like logo) */
+.title-brackets {
+  display: inline-block;
+}
+.title-brackets::before {
+  content: "[ ";
+  color: var(--accent);
+  font-weight: 300;
+}
+.title-brackets::after {
+  content: " ]";
+  color: var(--accent);
+  font-weight: 300;
+}
+
+/* Option 2: Terminal command prompt */
+.title-terminal {
+  display: block;
+}
+.title-terminal::before {
+  content: "$ ";
+  color: var(--accent);
+  font-weight: 400;
+}
+.title-terminal::after {
+  content: "";
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: 1px;
+  background: linear-gradient(to right, var(--border), transparent);
+  margin-top: 0.5rem;
+}
+
+/* Option 3: ASCII box/border */
+.title-box {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid var(--border);
+  position: relative;
+}
+.title-box::before {
+  content: "┌" attr(data-top) "┐";
+  position: absolute;
+  top: -0.65rem;
+  left: 0;
+  right: 0;
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0;
+}
+
+/* Option 4: Hash header with double underline */
+.title-hash {
+  display: block;
+}
+.title-hash::before {
+  content: "# ";
+  color: var(--accent);
+  font-weight: 400;
+}
+.title-hash::after {
+  content: "";
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  border-bottom: 2px double var(--border);
+  margin-top: 0.25rem;
+}
+
+/* Option 5: Typewriter with blinking cursor */
+.title-typewriter {
+  display: inline-block;
+}
+.title-typewriter::after {
+  content: "█";
+  color: var(--text);
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+}
+
+/* File path style */
+.title-path {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--accent);
+  margin-bottom: 1rem;
+}
+
+/* Path links - no underline, burnt orange on hover */
+.path-link {
+  color: var(--accent);
+  font-weight: 300;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.path-link:hover {
+  color: var(--link-hover);
+}
+
+/* Section summary - slightly indented from path */
+.section-summary {
+  max-width: 95%;
+  margin-left: 1rem;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text);
+  opacity: 0.85;
+}
+
+.section-summary p {
+  margin: 0;
+}
+
+/* Single page content - match summary size and width */
+.post-content {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  max-width: 95%;
+  margin-left: 1rem;
+}
+
+/* Section list - more indented */
+.section-list {
+  max-width: 90%;
+  margin-left: 1.5rem;
+}
+
+.page-item {
+  padding: 0.75rem 0;
+  border-bottom: 1px dashed var(--accent);
+}
+
+.page-item:last-child {
+  border-bottom: none;
+}
+
+.page-item-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.page-item-link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.page-item-link:hover {
+  color: var(--link-hover);
+}
+
+.page-item-status {
+  font-size: 0.7rem;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.page-item-date {
+  margin-left: auto;
+  font-size: 0.7rem;
+  color: var(--accent);
+  font-family: inherit;
+}
+
+.page-item-desc {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--text);
+  opacity: 0.7;
+  line-height: 1.5;
+}
+
 /* Responsive adjustments */
-@media (max-width: 600px) {
-  .logo-svg {
-    max-width: 400px;
+@media (max-width: 767px) {
+  html {
+    font-size: 14px; /* Smaller base font on mobile */
   }
+
+  .logo-svg {
+    max-width: 72vw; /* 80% of 90vw for mobile */
+  }
+}
+
+/* Hamburger menu styles */
+.hamburger-btn {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.hamburger-btn:hover {
+  background-color: var(--code-bg);
+}
+
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 18px;
+  height: 14px;
+}
+
+.hamburger-icon span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--text);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.hamburger-btn.active .hamburger-icon span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger-btn.active .hamburger-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-btn.active .hamburger-icon span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.mobile-menu {
+  transition: opacity 0.2s, transform 0.2s;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+}
+
+.mobile-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.mobile-menu a:hover {
+  background-color: var(--code-bg);
+}
+
+/* Social menu styles */
+.social-btn {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.social-btn:hover {
+  background-color: var(--code-bg);
+}
+
+.social-menu {
+  transition: opacity 0.2s, transform 0.2s;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  min-width: 140px;
+}
+
+.social-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.social-menu a:hover,
+.social-menu button:hover {
+  background-color: var(--code-bg);
 }
 
 /* Syntax highlighting - Gruvbox Light (default) */
