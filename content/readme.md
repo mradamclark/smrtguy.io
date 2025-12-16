@@ -1,8 +1,3 @@
-+++
-title = 'readme'
-layout = 'readme'
-+++
-
 ---
 title: "readme"
 layout: "readme"
